@@ -1,7 +1,7 @@
 class CompletePlaceData < ActiveRecord::Migration
 	def change
 		add_column :places, :contact_name, :string
-		add_column :places, :contact_mail, :string, :null => false
+		add_column :places, :contact_mail, :string, :default => "", :null => false
 		add_column :places, :contact_facebook, :string
 		add_column :places, :contact_twitter, :string
 		# yes / no / dont-know
@@ -9,6 +9,6 @@ class CompletePlaceData < ActiveRecord::Migration
 		# yes / no / dont-know
 		add_column :places, :dropin, :string
 		# idea / in-progress / up-and-running
-		add_column :places, :progress
+		add_column :places, :progress, :string
 	end
 end

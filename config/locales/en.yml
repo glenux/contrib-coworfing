@@ -209,9 +209,23 @@ en:
     symbolizes: 
       place:
         kind:
-          private: Private
-          public: Public
-          business: Pro 
+          private: "Individual"
+          public: "Public"
+          nonprofit: "Non-profit"
+          business: "Professional"
+        progress:
+          inprogress: "Project in progress"
+          running: "Open and running"
+          idea: "Only an idea"
+        "drop_in":
+          dontknow: "I don't know"
+          "yes": "Yes"
+          "no": "No"
+        "coworking_visa":
+          dontknow: "I don't know"
+          "yes": "Yes"
+          "no": "No"
+
   navbar:
     invite: 'Invite people'
     map: 'Map'

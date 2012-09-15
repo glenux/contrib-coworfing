@@ -7,30 +7,32 @@
 
       = f.input :name, input_html: { class: 'span5' }
       
-      - if !@place.photo? || @place.new_record?
-        - unless @place.photo_cache.nil?
-          = f.input :photo, as: :file, :hint => @place.photo_name.to_s
-        -else
-          = f.input :photo, as: :file
-        = f.hidden_field :photo_cache
-      - else
-        = f.input :remove_photo, as: :boolean
-        .control-group
-          .control-label Image
-          .controls
-            %ul.thumbnails
-              %li.thumbnail= image_tag(@place.photo_url(:thumb)) 
       = f.input :address_line1, input_html: { class: 'span5' }
       = f.input :city, input_html: { class: 'span3' }
       = f.input :country, input_html: { class: 'span3 chzn-select' }
       = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
-      = f.input :website, input_html: { class: 'span3' }
-      = f.input :wifi, input_html: { class: 'span5' }
       = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
 
     .span6
-      %legend Provide some details
-      = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2' }
+      %legend Contact details
+      = f.input :kind, label: "Structure kind", required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2' }
+      = f.input :contact_name,  input_html: { class: 'span3' }
+      = f.input :contact_mail, required: true, input_html: { class: 'span3' }
+      = f.input :website, input_html: { class: 'span3' }
+      = f.input :contact_facebook, input_html: { class: 'span3' }
+      = f.input :contact_twitter, input_html: { class: 'span3' }
+      = f.input :contact_twitter, input_html: { class: 'span3' }
+
+    .span6
+      %legend Other details
+      = f.input :coworking_visa, required: true, collection: Place.get_coworking_visa_values, input_html: { class: 'chzn-select span2' }
+
+      = f.input :drop_in, required: true, collection: Place.get_drop_in_values, input_html: { class: 'chzn-select span2' }
+
+      = f.input :progress, required: true, collection: Place.get_progress_values, input_html: { class: 'chzn-select span2' }
+
+
+      = f.input :wifi, input_html: { class: 'span5' }
 
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke' 

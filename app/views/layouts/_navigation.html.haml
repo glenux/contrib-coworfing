@@ -8,11 +8,15 @@
     %li
       = link_to places_path do
         %i.icon-th.icon-white
-        = t('navbar.places') 
+        = t('navbar.ideas') 
     %li
-      = link_to people_path do
-        %i.icon-user.icon-white
-        = t('navbar.people')
+      = link_to places_path do
+        %i.icon-th.icon-white
+        = t('navbar.projects') 
+    %li
+      = link_to places_path do
+        %i.icon-th.icon-white
+        = t('navbar.places') 
 
   - unless user_signed_in?
     %ul.nav.pull-right

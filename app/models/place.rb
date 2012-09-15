@@ -1,13 +1,17 @@
 class Place < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
-  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache
+  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache, :coworking_visa, :drop_in, :progress, :contact_twitter, :contact_facebook, :contact_mail, :contact_name
 
   geocoded_by :address 
 
   # only add at the end
   bitmask :features, as: [:discussion, :music, :smoke]
+
   symbolize :kind, in: [:private, :public, :business], scopes: true, methods: true
+  symbolize :coworking_visa, in: [:yes, :no, :dontknow], scopes: true, methods: true
+  symbolize :drop_in, in: [:yes, :no, :dontknow], scopes: true, methods: true
+  symbolize :progress, in: [:idea, :inprogress, :running], scopes: true, methods: true
 
   belongs_to :user
 
@@ -15,6 +19,8 @@ class Place < ActiveRecord::Base
   has_many :comments
 
   validates :name, length: { in: 5..45 }
+  validates :contact_mail, length: { in: 5..200 }
+
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
   validates :city, presence: true, format: { with: /\A[a-z][a-z\s]+[a-z]\z/i }
