@@ -5,8 +5,9 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'rails' 
-gem 'pg'
-gem 'thin'
+#gem 'pg'
+#gem 'thin'
+gem 'unicorn'
 
 gem 'oj'
 
